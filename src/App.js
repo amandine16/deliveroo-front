@@ -1,7 +1,15 @@
-import "./App.css";
+// import de useState pour changer d'état nos variables
+import { useState, useEffect } from "react";
+import "./App.scss";
+// appel de axios pour réaliser les requêtes
 import axios from "axios";
+//Import des composants
+import Header from "./components/Header";
 
 function App() {
+  // initialisation des states
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const fetchData = async () => {
     try {
       // Requête axios vers le serveur
@@ -9,12 +17,23 @@ function App() {
         "https://deliveroo-back-react.herokuapp.com/"
       );
       console.log(response.data);
+      setData(response.data);
+      setIsLoading(false);
     } catch (error) {
       alert("An error");
     }
   };
-  fetchData();
-  return <div className="App"></div>;
+  // Utilisation de useEffect pour faire la requête qu'une seule fois par chargement du composant
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  //Je test si tout est chargé avant d'afficher les résultats
+  return isLoading ? (
+    <span>En cours de chargement ...</span>
+  ) : (
+    <Header data={data} />
+  );
 }
 
 export default App;
