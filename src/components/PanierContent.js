@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const PanierContent = ({ product }) => {
   // initialisation du state counter
