@@ -15,8 +15,8 @@ function App() {
     try {
       // Requête axios vers le serveur
       const response = await axios.get(
-        // "http://localhost:3001"
-        "https://deliveroo-back-react.herokuapp.com/"
+        "http://localhost:3001"
+        // "https://deliveroo-back-react.herokuapp.com/"
       );
       console.log(response.data);
       setData(response.data);
