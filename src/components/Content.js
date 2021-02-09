@@ -5,7 +5,6 @@ import Panier from "./Panier";
 const Content = ({ data }) => {
   // Crée un state qui va stocker les infos de la card cliquée
   const [product, setProduct] = useState([]);
-  const [isPresent, setIsPresent] = useState(false);
 
   return (
     <div className="Content ">
@@ -18,13 +17,12 @@ const Content = ({ data }) => {
                 key={i}
                 product={product}
                 setProduct={setProduct}
-                isPresent={isPresent}
-                setIsPresent={setIsPresent}
               />
             );
           })}
         </div>
-        <Panier products={product} setProducts={setProduct} />
+
+        <Panier product={product} setProduct={setProduct} />
       </div>
     </div>
   );

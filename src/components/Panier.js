@@ -1,21 +1,46 @@
 import PanierContent from "./PanierContent";
+import Total from "./Total";
 
-const Panier = ({ products, setProducts }) => {
+const Panier = ({ product, setProduct }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   return (
     <div className="Panier">
-      <div className="cart">
+      <div className="panierContent">
         <form onSubmit={handleSubmit}></form>
         {/* btn valider le panier */}
-        <div className="btn-panier">
-          <input type="text" placeholder="Valider mon panier" />
+        <div
+          className={
+            product.length > 0 ? "btn-panier validate" : " btn-panier disabled"
+          }
+        >
+          <button>Valider mon panier</button>
         </div>
         {/* details du panier */}
-        {products.map((product, index) => {
-          return <PanierContent product={product} key={index} />;
-        })}
+        {product.length > 0 && (
+          <>
+            <div className="listeProducts">
+              {product.map((elem, index) => {
+                return (
+                  <>
+                    <PanierContent
+                      product={product}
+                      elem={elem}
+                      setProduct={setProduct}
+                      index={index}
+                    />
+                  </>
+                );
+              })}
+            </div>
+
+            <div className="totalContent">
+              {/* Sous total du panier */}
+              <Total product={product} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
