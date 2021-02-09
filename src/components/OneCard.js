@@ -1,7 +1,8 @@
 import popularSvg from "../assets/img/popularSvg.svg";
 
-const OneCard = ({ meal, product, setProduct }) => {
+const OneCard = ({ meal, product, setProduct, isPresent, setIsPresent }) => {
   const handleClick = (meal) => {
+    // isPresent est ma variable pour tester si l'id du meal est deja présent dans le state
     let newMeal = {
       name: meal.title,
       price: meal.price,
@@ -10,32 +11,29 @@ const OneCard = ({ meal, product, setProduct }) => {
     };
     // je copie mon tableau d'objets products
     const newTab = [...product];
-
-    // variable pour tester si l'id du meal est deja présent dans le state
-    let isPresent = false;
-    // console.log(isPresent);
+    console.log(newTab);
     // Je boucle sur mon tableau, pour voir si l'id du produit selectionné existe
-    for (let i = 0; i < newTab.length - 1; i++) {
-      // console.log(meal.id);
-      // console.log(newTab[i].id);
-      // console.log(newTab);
+    for (let i = 0; i <= newTab.length - 1; i++) {
       if (newTab[i].id === meal.id) {
         console.log("deja present");
         // Je récupère l'index auquel mon produit se trouve dans mon tableau
-        isPresent = i;
+        setIsPresent(i); //is present récupère l'index du meal
         console.log(isPresent);
       }
     }
     if (!isPresent) {
-      console.log("n'existe pas deja");
+      console.log("le produit n'existe pas deja");
+      // je l'ajoute alors à mon state
       newTab.push(newMeal);
       setProduct(newTab);
     } else {
       // si existe deja, j'incrémente la clef qty
-      newMeal.qty = newMeal.qty + 1;
-      console.log(newMeal.qty);
       // console.log(newTab);
-
+      // newMeal.qty = newMeal.qty + 1;
+      // console.log(newMeal.qty);
+      // console.log(newTab);
+      // newTab[isPresent].qty = newTab[isPresent].qty + 1;
+      // setProduct(newTab);
       // console.log(newTab);
       console.log("existe deja");
     }

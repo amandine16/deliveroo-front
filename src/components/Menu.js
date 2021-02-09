@@ -1,6 +1,6 @@
 import OneCard from "./OneCard";
 
-const Menu = ({ category, product, setProduct }) => {
+const Menu = ({ category, product, setProduct, isPresent, setIsPresent }) => {
   return (
     //   si la catégorie n'est pas vide, je l'affiche
     category.meals.length !== 0 && (
@@ -15,6 +15,8 @@ const Menu = ({ category, product, setProduct }) => {
                 key={i}
                 product={product}
                 setProduct={setProduct}
+                isPresent={isPresent}
+                setIsPresent={setIsPresent}
               />
             );
           })}
