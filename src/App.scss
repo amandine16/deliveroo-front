@@ -94,7 +94,10 @@ h3 {
         outline: none;
       }
     }
-    .content-panier {
+    .PanierContent {
+      > div {
+        padding: 0 5px;
+      }
       display: flex;
       align-items: center;
       justify-content: center;

@@ -5,6 +5,7 @@ import "./App.scss";
 import axios from "axios";
 //Import des composants
 import Header from "./components/Header";
+import Content from "./components/Content";
 
 function App() {
   // initialisation des states
@@ -14,6 +15,7 @@ function App() {
     try {
       // Requête axios vers le serveur
       const response = await axios.get(
+        // "http://localhost:3001"
         "https://deliveroo-back-react.herokuapp.com/"
       );
       console.log(response.data);
@@ -32,7 +34,10 @@ function App() {
   return isLoading ? (
     <span>En cours de chargement ...</span>
   ) : (
-    <Header data={data} />
+    <>
+      <Header data={data.restaurant} />
+      <Content data={data.categories} />
+    </>
   );
 }
 

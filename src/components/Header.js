@@ -1,4 +1,3 @@
-import Content from "./Content";
 import logo from "../assets/img/logo.svg";
 const Header = ({ data }) => {
   return (
@@ -10,14 +9,13 @@ const Header = ({ data }) => {
       {/* Info du restaurant - name + description + picture */}
       <div className="Restaurant-infos container">
         <div className="title-description">
-          <h1>{data.restaurant.name}</h1>
-          <p>{data.restaurant.description}</p>
+          <h1>{data.name}</h1>
+          <p>{data.description}</p>
         </div>
         <div className="picture">
-          <img src={data.restaurant.picture} alt="" />
+          <img src={data.picture} alt="" />
         </div>
       </div>
-      <Content data={data} />
     </div>
   );
 };
