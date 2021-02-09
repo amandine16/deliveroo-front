@@ -2,16 +2,42 @@ import popularSvg from "../assets/img/popularSvg.svg";
 
 const OneCard = ({ meal, product, setProduct }) => {
   const handleClick = (meal) => {
-    // copie du state
-    const newTab = [...product]; //id:1, id:2
-    // je test si l'objet meal n'est pas deja présent dans mmon newTab
-    if (newTab.indexOf(meal) === -1) {
-      // S'il est pas présent, je l'ajoute
-      newTab.push(meal);
+    let newMeal = {
+      name: meal.title,
+      price: meal.price,
+      qty: 1,
+      id: meal.id,
+    };
+    // je copie mon tableau d'objets products
+    const newTab = [...product];
+
+    // variable pour tester si l'id du meal est deja présent dans le state
+    let isPresent = false;
+    // console.log(isPresent);
+    // Je boucle sur mon tableau, pour voir si l'id du produit selectionné existe
+    for (let i = 0; i < newTab.length - 1; i++) {
+      // console.log(meal.id);
+      // console.log(newTab[i].id);
+      // console.log(newTab);
+      if (newTab[i].id === meal.id) {
+        console.log("deja present");
+        // Je récupère l'index auquel mon produit se trouve dans mon tableau
+        isPresent = i;
+        console.log(isPresent);
+      }
+    }
+    if (!isPresent) {
+      console.log("n'existe pas deja");
+      newTab.push(newMeal);
       setProduct(newTab);
     } else {
-      // sinon j'incrémente mon compteur
-      console.log("deja dedans");
+      // si existe deja, j'incrémente la clef qty
+      newMeal.qty = newMeal.qty + 1;
+      console.log(newMeal.qty);
+      // console.log(newTab);
+
+      // console.log(newTab);
+      console.log("existe deja");
     }
   };
 
