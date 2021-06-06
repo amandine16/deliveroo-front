@@ -354,14 +354,43 @@ h3 {
   width: 100%;
   object-fit: cover;
 }
-// .popular {
-//   color: #ff8000;
-//   font-size: 10.8px;
-//   font-weight: bold;
-//   display: flex;
-//   align-items: center;
-//   margin-left: 1em;
-// }
+.center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  span {
+    margin: 15px;
+    font-size: 12px;
+  }
+  .spinner > div {
+    width: 2rem;
+    height: 2rem;
+    background: $black;
+    border-radius: 50%;
+    display: inline-block;
+    animation: 1.5s bounce infinite ease-in-out both;
+    margin-right: 10px;
+  }
+  .spinner .bounce1 {
+    animation-delay: -0.3s;
+  }
+  .spinner .bounce2 {
+    animation-delay: -0.15s;
+  }
+
+  @keyframes bounce {
+    0%,
+    80%,
+    100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+}
 
 @media (max-width: 992px) {
   .container {

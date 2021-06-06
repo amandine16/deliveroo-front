@@ -32,7 +32,14 @@ function App() {
 
   //Je test si tout est chargé avant d'afficher les résultats
   return isLoading ? (
-    <span>En cours de chargement ...</span>
+    <div className="center">
+      <div className="spinner">
+        <div className="bounce1"></div>
+        <div className="bounce2"></div>
+        <div className="bounce3"></div>
+      </div>
+      <span>En attente ...</span>
+    </div>
   ) : (
     <>
       <Header data={data.restaurant} />
