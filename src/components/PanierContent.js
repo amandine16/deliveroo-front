@@ -31,6 +31,9 @@ const PanierContent = ({ product, elem, setProduct, index }) => {
             const newTab = [...product];
             console.log(newTab);
             newTab[index].qty--;
+            if (newTab[index].qty <= 0) {
+              newTab.splice(index, 1)
+            }
             setProduct(newTab);
           }}
         >
