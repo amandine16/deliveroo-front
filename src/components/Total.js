@@ -1,7 +1,7 @@
 const Total = ({ product }) => {
   let sousTotal = 0;
   for (let i = 0; i < product.length; i++) {
-    sousTotal += product[i].price * product[i].qty;
+    sousTotal += Number(product[i].price) * product[i].qty;
   }
   let livraison = 2.5;
   let total = sousTotal + livraison;
